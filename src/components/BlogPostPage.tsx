@@ -201,91 +201,51 @@ const BlogPostPage: React.FC = () => {
 
       {/* Article Header */}
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        {/* Featured Image */}
-        {post.image_url && (
+        <div className="animate-slide-up">
+          {/* Featured Image */}
+          {post.image_url && (
+            <div className="mb-8">
+              <img 
+                src={post.image_url}
+                alt={post.title}
+                className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-lg"
+              />
+            </div>
+          )}
+
+          {/* Article Meta */}
           <div className="mb-8">
-            <img 
-              src={post.image_url}
-              alt={post.title}
-              className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-lg"
-            />
-          </div>
-        )}
-
-        {/* Article Meta */}
-        <div className="mb-8">
-          <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
-            <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4" />
-              <span>{formatDate(post.published_at)}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4" />
-              <span>{getReadTime(post.content)}</span>
-            </div>
-          </div>
-
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-            {post.title}
-          </h1>
-
-          {/* Author Info */}
-          <div className="flex items-center justify-between border-b border-gray-200 pb-6">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white font-bold">
-                {post.author.split(' ').map(n => n[0]).join('')}
+            <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-4 h-4" />
+                <span>{formatDate(post.published_at)}</span>
               </div>
-              <div>
-                <div className="font-semibold text-gray-900">{post.author}</div>
-                <div className="text-sm text-gray-600">Marketing Expert</div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4" />
+                <span>{getReadTime(post.content)}</span>
               </div>
             </div>
 
-            {/* Social Actions */}
-            <div className="flex items-center gap-4">
-              <button 
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
-                  hasLiked || isLiking
-                    ? 'text-red-500 bg-red-50'
-                    : 'text-gray-600 hover:text-red-500 hover:bg-red-50'
-                }`}
-                onClick={handleLike}
-                disabled={isLiking || hasLiked}
-              >
-                <Heart className={`w-4 h-4 ${hasLiked ? 'fill-current' : ''}`} />
-                <span className="text-sm">{post.likes_count}</span>
-              </button>
-              <button className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-blue-500 hover:bg-blue-50 rounded-lg transition-colors">
-                <MessageCircle className="w-4 h-4" />
-                <span className="text-sm">{Math.floor(Math.random() * 10)}</span>
-              </button>
-              <button 
-                className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-green-500 hover:bg-green-50 rounded-lg transition-colors"
-                onClick={handleShare}
-              >
-                <Share2 className="w-4 h-4" />
-                <span className="text-sm">Share</span>
-              </button>
-            </div>
-          </div>
-        </div>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
+              {post.title}
+            </h1>
 
-        {/* Article Content */}
-        <div className="prose prose-lg max-w-none">
-          <div 
-            className="text-gray-700 leading-relaxed space-y-6 prose prose-lg prose-headings:text-gray-900 prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-p:text-gray-700 prose-p:leading-relaxed prose-strong:text-gray-900 prose-em:text-gray-800 prose-ul:text-gray-700 prose-ol:text-gray-700 prose-li:text-gray-700 prose-blockquote:text-gray-800 prose-blockquote:border-l-primary-blue prose-blockquote:bg-blue-50 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-a:text-primary-blue prose-a:no-underline hover:prose-a:underline"
-            dangerouslySetInnerHTML={formatContent(post.content)}
-          />
-        </div>
+            {/* Author Info */}
+            <div className="flex items-center justify-between border-b border-gray-200 pb-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white font-bold">
+                  {post.author.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900">{post.author}</div>
+                  <div className="text-sm text-gray-600">Marketing Expert</div>
+                </div>
+              </div>
 
-        {/* Article Footer */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-600">Was this helpful?</span>
-              <div className="flex gap-2">
+              {/* Social Actions */}
+              <div className="flex items-center gap-4">
                 <button 
-                  className={`flex items-center gap-1 px-3 py-1 text-sm rounded-full transition-colors ${
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                     hasLiked || isLiking
                       ? 'text-red-500 bg-red-50'
                       : 'text-gray-600 hover:text-red-500 hover:bg-red-50'
@@ -294,38 +254,80 @@ const BlogPostPage: React.FC = () => {
                   disabled={isLiking || hasLiked}
                 >
                   <Heart className={`w-4 h-4 ${hasLiked ? 'fill-current' : ''}`} />
-                  {hasLiked ? 'Liked' : 'Like'}
+                  <span className="text-sm">{post.likes_count}</span>
+                </button>
+                <button className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-blue-500 hover:bg-blue-50 rounded-lg transition-colors">
+                  <MessageCircle className="w-4 h-4" />
+                  <span className="text-sm">{Math.floor(Math.random() * 10)}</span>
                 </button>
                 <button 
-                  className="flex items-center gap-1 px-3 py-1 text-sm text-gray-600 hover:text-blue-500 hover:bg-blue-50 rounded-full transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-green-500 hover:bg-green-50 rounded-lg transition-colors"
                   onClick={handleShare}
                 >
                   <Share2 className="w-4 h-4" />
-                  Share
+                  <span className="text-sm">Share</span>
                 </button>
               </div>
             </div>
-            
-            <div className="text-sm text-gray-500">
-              Published on {formatDate(post.published_at)}
+          </div>
+
+          {/* Article Content */}
+          <div className="prose prose-lg max-w-none">
+            <div 
+              className="text-gray-700 leading-relaxed space-y-6 prose prose-lg prose-headings:text-gray-900 prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-p:text-gray-700 prose-p:leading-relaxed prose-strong:text-gray-900 prose-em:text-gray-800 prose-ul:text-gray-700 prose-ol:text-gray-700 prose-li:text-gray-700 prose-blockquote:text-gray-800 prose-blockquote:border-l-primary-blue prose-blockquote:bg-blue-50 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-a:text-primary-blue prose-a:no-underline hover:prose-a:underline"
+              dangerouslySetInnerHTML={formatContent(post.content)}
+            />
+          </div>
+
+          {/* Article Footer */}
+          <div className="mt-12 pt-8 border-t border-gray-200">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <span className="text-sm text-gray-600">Was this helpful?</span>
+                <div className="flex gap-2">
+                  <button 
+                    className={`flex items-center gap-1 px-3 py-1 text-sm rounded-full transition-colors ${
+                      hasLiked || isLiking
+                        ? 'text-red-500 bg-red-50'
+                        : 'text-gray-600 hover:text-red-500 hover:bg-red-50'
+                    }`}
+                    onClick={handleLike}
+                    disabled={isLiking || hasLiked}
+                  >
+                    <Heart className={`w-4 h-4 ${hasLiked ? 'fill-current' : ''}`} />
+                    {hasLiked ? 'Liked' : 'Like'}
+                  </button>
+                  <button 
+                    className="flex items-center gap-1 px-3 py-1 text-sm text-gray-600 hover:text-blue-500 hover:bg-blue-50 rounded-full transition-colors"
+                    onClick={handleShare}
+                  >
+                    <Share2 className="w-4 h-4" />
+                    Share
+                  </button>
+                </div>
+              </div>
+              
+              <div className="text-sm text-gray-500">
+                Published on {formatDate(post.published_at)}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Related Posts CTA */}
-        <div className="mt-16 p-8 bg-gray-50 rounded-2xl text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Want More Marketing Insights?
-          </h3>
-          <p className="text-gray-600 mb-6">
-            Check out our other blog posts for more growth strategies and marketing tips.
-          </p>
-          <Link
-            to="/blog"
-            className="inline-flex items-center px-6 py-3 bg-primary-blue text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-          >
-            View All Posts
-          </Link>
+          {/* Related Posts CTA */}
+          <div className="mt-16 p-8 bg-gray-50 rounded-2xl text-center">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Want More Marketing Insights?
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Check out our other blog posts for more growth strategies and marketing tips.
+            </p>
+            <Link
+              to="/blog"
+              className="inline-flex items-center px-6 py-3 bg-primary-blue text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+            >
+              View All Posts
+            </Link>
+          </div>
         </div>
       </article>
 
