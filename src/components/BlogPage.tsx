@@ -67,31 +67,10 @@ const BlogPage: React.FC = () => {
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="bg-white shadow-[0_4px_20px_rgb(0,0,0,0.08)]">
-        {/* Top Right Logo */}
-        <div className="absolute top-4 right-8 z-10">
-          <img 
-            src="/src/assets/Pi7_97df89_95841abeaee8492d9a125d32fab0e3fb~mv2 copy copy.png" 
-            alt="Melny Results Secondary Logo" 
-            className="h-8 w-auto opacity-80"
-          />
-        </div>
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            {/* Left spacer to balance the right logo */}
-            <div className="w-16 hidden md:block"></div>
-            
-            {/* Centered Content */}
+          <div className="flex justify-center items-center h-20">
+            {/* Centered Navigation Links */}
             <div className="flex items-center space-x-12">
-              {/* Main Logo */}
-              <Link to="/">
-                <img 
-                  src="/src/assets/Pi7_97df89_95841abeaee8492d9a125d32fab0e3fb~mv2 copy.png" 
-                  alt="Melny Results Logo" 
-                  className="h-12 w-auto"
-                />
-              </Link>
-              
               {/* Navigation Links - Desktop */}
               <div className="hidden md:flex items-center space-x-8">
                 <Link to="/" className="text-gray-900 hover:text-primary-blue transition-colors duration-200 font-medium">
@@ -109,11 +88,8 @@ const BlogPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right spacer to balance (same width as secondary logo area) */}
-            <div className="w-16 hidden md:block"></div>
-
             {/* Mobile Menu Button */}
-            <div className="md:hidden">
+            <div className="md:hidden absolute right-4">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:text-primary-blue focus:outline-none"
@@ -286,22 +262,13 @@ const BlogPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             {/* Cookies + Privacy Link */}
-            <div className="mb-12">
+            <div>
               <Link 
                 to="/privacy-policy" 
                 className="text-white hover:text-gray-300 transition-colors underline text-sm tracking-wide"
               >
                 Cookies + Privacy
               </Link>
-            </div>
-            
-            {/* Logo Image Only */}
-            <div className="flex justify-center">
-              <img 
-                src="/src/assets/Pi7_97df89_95841abeaee8492d9a125d32fab0e3fb~mv2 copy.png" 
-                alt="Melny Results Logo" 
-                className="w-48 h-48 opacity-90"
-              />
             </div>
           </div>
         </div>
