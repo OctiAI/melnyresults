@@ -136,9 +136,11 @@ const BlogPage: React.FC = () => {
       {/* Blog Header */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl font-bold text-gray-900 mb-8">
-            Welcome to Melny Results Blog!
-          </h1>
+          <div className="animate-slide-up">
+            <h1 className="text-5xl font-bold text-gray-900 mb-8">
+              Welcome to Melny Results Blog!
+            </h1>
+          </div>
         </div>
       </section>
 
@@ -165,7 +167,7 @@ const BlogPage: React.FC = () => {
               <p className="text-gray-600">Check back soon for new content!</p>
             </div>
           ) : (
-            <div className="space-y-12">
+            <div className="space-y-12 animate-slide-up">
               {posts.map((post) => (
                 <Link 
                   key={post.id} 

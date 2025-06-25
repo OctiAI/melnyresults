@@ -131,211 +131,213 @@ const FreeMarketingAnalysisPage: React.FC = () => {
       {/* Combined Hero and Form Section - Reduced top padding and combined sections */}
       <section className="pt-16 pb-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-            Claim Your Free Marketing Analysis — No Contracts. No Pressure. Just a Plan That Works.
-          </h1>
-          
-          <p className="text-xl text-gray-600 leading-relaxed mb-10 max-w-3xl mx-auto">
-            Fill out the form below. We'll review your business and send you a custom plan to get more clients — fast.
-          </p>
+          <div className="animate-slide-up">
+            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+              Claim Your Free Marketing Analysis — No Contracts. No Pressure. Just a Plan That Works.
+            </h1>
+            
+            <p className="text-xl text-gray-600 leading-relaxed mb-10 max-w-3xl mx-auto">
+              Fill out the form below. We'll review your business and send you a custom plan to get more clients — fast.
+            </p>
 
-          {/* Form Section - Moved up into main section */}
-          <div className="max-w-2xl mx-auto">
-            {error && (
-              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-red-600">{error}</p>
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name Fields */}
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                    First Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    required
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
-                    disabled={isSubmitting}
-                  />
+            {/* Form Section - Moved up into main section */}
+            <div className="max-w-2xl mx-auto">
+              {error && (
+                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                  <p className="text-red-600">{error}</p>
                 </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                    Last Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    required
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
-                    disabled={isSubmitting}
-                  />
-                </div>
-              </div>
+              )}
 
-              {/* Email and Phone */}
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
-                    disabled={isSubmitting}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
-                    disabled={isSubmitting}
-                  />
-                </div>
-              </div>
-
-              {/* Company Name */}
-              <div>
-                <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
-                  Company Name *
-                </label>
-                <input
-                  type="text"
-                  id="companyName"
-                  name="companyName"
-                  required
-                  value={formData.companyName}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
-                  disabled={isSubmitting}
-                />
-              </div>
-
-              {/* How did you find us */}
-              <div>
-                <label htmlFor="howDidYouFindUs" className="block text-sm font-medium text-gray-700 mb-2">
-                  How did you find us?
-                </label>
-                <select
-                  id="howDidYouFindUs"
-                  name="howDidYouFindUs"
-                  value={formData.howDidYouFindUs}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
-                  disabled={isSubmitting}
-                >
-                  <option value="">Select an option</option>
-                  <option value="google">Google Search</option>
-                  <option value="social-media">Social Media</option>
-                  <option value="referral">Referral</option>
-                  <option value="youtube">YouTube</option>
-                  <option value="linkedin">LinkedIn</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              {/* Monthly Spend */}
-              <div>
-                <label htmlFor="monthlySpend" className="block text-sm font-medium text-gray-700 mb-2">
-                  How much are you spending per month (USD)?
-                </label>
-                <select
-                  id="monthlySpend"
-                  name="monthlySpend"
-                  value={formData.monthlySpend}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
-                  disabled={isSubmitting}
-                >
-                  <option value="">Select a range</option>
-                  <option value="< $1k">Less than $1,000</option>
-                  <option value="$1k–$5k">$1,000 - $5,000</option>
-                  <option value="$5k+">$5,000+</option>
-                  <option value="not-spending">Not currently spending on marketing</option>
-                </select>
-              </div>
-
-              {/* Website */}
-              <div>
-                <label htmlFor="website" className="block text-sm font-medium text-gray-700 mb-2">
-                  Website
-                </label>
-                <input
-                  type="url"
-                  id="website"
-                  name="website"
-                  value={formData.website}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
-                  disabled={isSubmitting}
-                />
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-primary-red text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-700 transition-all duration-200 hover:scale-105 shadow-xl hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-              >
-                {isSubmitting ? (
-                  <div className="flex items-center justify-center gap-2">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                    Sending Your Request...
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Name Fields */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                      First Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      required
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
+                      disabled={isSubmitting}
+                    />
                   </div>
-                ) : (
-                  'Send Me My Free Analysis'
-                )}
-              </button>
+                  <div>
+                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                      Last Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      required
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                </div>
 
-              {/* Microcopy */}
-              <p className="text-sm text-gray-500 text-center">
-                Your info stays private. No spam. No pushy sales calls — just your custom plan.
-              </p>
+                {/* Email and Phone */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone *
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      required
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                </div>
 
-              {/* Trust Badges */}
-              <div className="flex justify-center items-center gap-6 pt-6 border-t border-gray-100 flex-wrap">
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
-                  <span>No contracts</span>
+                {/* Company Name */}
+                <div>
+                  <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
+                    Company Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="companyName"
+                    name="companyName"
+                    required
+                    value={formData.companyName}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
+                    disabled={isSubmitting}
+                  />
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
-                  <span>No obligations</span>
+
+                {/* How did you find us */}
+                <div>
+                  <label htmlFor="howDidYouFindUs" className="block text-sm font-medium text-gray-700 mb-2">
+                    How did you find us?
+                  </label>
+                  <select
+                    id="howDidYouFindUs"
+                    name="howDidYouFindUs"
+                    value={formData.howDidYouFindUs}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
+                    disabled={isSubmitting}
+                  >
+                    <option value="">Select an option</option>
+                    <option value="google">Google Search</option>
+                    <option value="social-media">Social Media</option>
+                    <option value="referral">Referral</option>
+                    <option value="youtube">YouTube</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="other">Other</option>
+                  </select>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
-                  <span>You own your data</span>
+
+                {/* Monthly Spend */}
+                <div>
+                  <label htmlFor="monthlySpend" className="block text-sm font-medium text-gray-700 mb-2">
+                    How much are you spending per month (USD)?
+                  </label>
+                  <select
+                    id="monthlySpend"
+                    name="monthlySpend"
+                    value={formData.monthlySpend}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
+                    disabled={isSubmitting}
+                  >
+                    <option value="">Select a range</option>
+                    <option value="< $1k">Less than $1,000</option>
+                    <option value="$1k–$5k">$1,000 - $5,000</option>
+                    <option value="$5k+">$5,000+</option>
+                    <option value="not-spending">Not currently spending on marketing</option>
+                  </select>
                 </div>
+
+                {/* Website */}
+                <div>
+                  <label htmlFor="website" className="block text-sm font-medium text-gray-700 mb-2">
+                    Website
+                  </label>
+                  <input
+                    type="url"
+                    id="website"
+                    name="website"
+                    value={formData.website}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-gray-100 border-0 rounded-lg focus:ring-2 focus:ring-primary-blue focus:bg-white transition-colors"
+                    disabled={isSubmitting}
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary-red text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-700 transition-all duration-200 hover:scale-105 shadow-xl hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                >
+                  {isSubmitting ? (
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      Sending Your Request...
+                    </div>
+                  ) : (
+                    'Send Me My Free Analysis'
+                  )}
+                </button>
+
+                {/* Microcopy */}
+                <p className="text-sm text-gray-500 text-center">
+                  Your info stays private. No spam. No pushy sales calls — just your custom plan.
+                </p>
+
+                {/* Trust Badges */}
+                <div className="flex justify-center items-center gap-6 pt-6 border-t border-gray-100 flex-wrap">
+                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span>No contracts</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span>No obligations</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span>You own your data</span>
+                  </div>
+                </div>
+              </form>
+
+              {/* Bottom CTA */}
+              <div className="mt-12 p-8 bg-gray-50 rounded-2xl text-center">
+                <p className="text-lg text-gray-700">
+                  <strong>Still deciding?</strong> 👉 Our plans have helped clients go from $0 to record revenues — with no risk. Claim yours today.
+                </p>
               </div>
-            </form>
-
-            {/* Bottom CTA */}
-            <div className="mt-12 p-8 bg-gray-50 rounded-2xl text-center">
-              <p className="text-lg text-gray-700">
-                <strong>Still deciding?</strong> 👉 Our plans have helped clients go from $0 to record revenues — with no risk. Claim yours today.
-              </p>
             </div>
           </div>
         </div>
